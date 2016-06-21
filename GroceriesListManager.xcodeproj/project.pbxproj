@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C57F9C41D16FED300E69600 /* VegetablesByMonths.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C57F9C31D16FED200E69600 /* VegetablesByMonths.json */; };
 		7CD3D70F1D019A340095299D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3D70E1D019A340095299D /* AppDelegate.swift */; };
 		7CD3D7111D019A340095299D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3D7101D019A340095299D /* FirstViewController.swift */; };
 		7CD3D7131D019A340095299D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3D7121D019A340095299D /* SecondViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C57F9C31D16FED200E69600 /* VegetablesByMonths.json */ = {isa = PBXFileReference; explicitFileType = text.json; fileEncoding = 4; path = VegetablesByMonths.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
 		7CD3D70B1D019A340095299D /* GroceriesListManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceriesListManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD3D70E1D019A340095299D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CD3D7101D019A340095299D /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C57F9C21D16FEBC00E69600 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				7C57F9C31D16FED200E69600 /* VegetablesByMonths.json */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
 		7CD3D7021D019A340095299D = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +109,7 @@
 		7CD3D70D1D019A340095299D /* GroceriesListManager */ = {
 			isa = PBXGroup;
 			children = (
+				7C57F9C21D16FEBC00E69600 /* resources */,
 				7CD3D70E1D019A340095299D /* AppDelegate.swift */,
 				7CD3D7101D019A340095299D /* FirstViewController.swift */,
 				7CD3D7121D019A340095299D /* SecondViewController.swift */,
@@ -191,18 +202,21 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Thunderkerrigan;
 				TargetAttributes = {
 					7CD3D70A1D019A340095299D = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 					7CD3D7201D019A340095299D = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 7CD3D70A1D019A340095299D;
 					};
 					7CD3D72B1D019A340095299D = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 7CD3D70A1D019A340095299D;
 					};
 				};
@@ -232,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C57F9C41D16FED300E69600 /* VegetablesByMonths.json in Resources */,
 				7CD3D71B1D019A340095299D /* LaunchScreen.storyboard in Resources */,
 				7CD3D7181D019A340095299D /* Assets.xcassets in Resources */,
 				7CD3D7161D019A340095299D /* Main.storyboard in Resources */,
@@ -409,6 +424,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.Thunderkerrigan.GroceriesListManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -420,6 +436,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.Thunderkerrigan.GroceriesListManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -431,6 +449,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.Thunderkerrigan.GroceriesListManagerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GroceriesListManager.app/GroceriesListManager";
 			};
 			name = Debug;
@@ -443,6 +462,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.Thunderkerrigan.GroceriesListManagerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GroceriesListManager.app/GroceriesListManager";
 			};
 			name = Release;
@@ -454,6 +475,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.Thunderkerrigan.GroceriesListManagerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = GroceriesListManager;
 			};
 			name = Debug;
@@ -465,6 +487,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.Thunderkerrigan.GroceriesListManagerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = GroceriesListManager;
 			};
 			name = Release;
@@ -488,6 +512,7 @@
 				7CD3D7371D019A340095299D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7CD3D7381D019A340095299D /* Build configuration list for PBXNativeTarget "GroceriesListManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +521,7 @@
 				7CD3D73A1D019A340095299D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7CD3D73B1D019A340095299D /* Build configuration list for PBXNativeTarget "GroceriesListManagerUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +530,7 @@
 				7CD3D73D1D019A340095299D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
