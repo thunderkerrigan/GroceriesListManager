@@ -12,7 +12,7 @@ class FirstViewController: UIViewController
 {
     
     @IBOutlet weak var tableView: UITableView?
-    var productsArray: NSMutableArray?
+    var productsDic: NSMutableDictionary?
     
     
     
@@ -26,7 +26,10 @@ class FirstViewController: UIViewController
         {
             if let jsonData: Data = try! Data(contentsOf: URL(fileURLWithPath: path))
             {
-                productsArray = try! JSONSerialization.jsonObject(with: jsonData as Data, options: JSONSerialization.ReadingOptions()) as? NSMutableArray
+                if let jsonDic: NSMutableDictionary = try! JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) as! NSMutableDictionary
+                {
+                    productsDic = jsonDic
+                }
             }
         }
     }
@@ -60,19 +63,21 @@ extension FirstViewController : UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int
     {
         //TODO
-        return 1
+        return (productsDic?.allKeys.count)!
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         //TODO
-        return productsArray!.count
+        let keys: Array = (productsDic?.allKeys)!
+        let values: Array = productsDic?.keyEnumerator().value(forUndefinedKey: keys[section] as! String) as! [AnyObject]
+        return values.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let tableViewCell : UITableViewCell! = UITableViewCell()
-        tableViewCell.textLabel?.text = productsArray![(indexPath as NSIndexPath).row] as? String
+//        tableViewCell.textLabel?.text = productsArray![(indexPath as NSIndexPath).row] as? String
         tableViewCell.backgroundColor = self.randomColor(Int(arc4random_uniform(4)))
         return tableViewCell
     }
@@ -89,7 +94,7 @@ extension FirstViewController : UITableViewDelegate
     {
         let tableViewRowAction: UITableViewRowAction? = UITableViewRowAction(style: .destructive , title: "Effacer", handler: { (_, indexPath) in
             //TODO
-            self.productsArray!.removeObject(at: (indexPath as NSIndexPath).row)
+//            self.productsArray!.removeObject(at: (indexPath as NSIndexPath).row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         })
         return [tableViewRowAction!]
@@ -97,10 +102,10 @@ extension FirstViewController : UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        let alertViewController: UIAlertController = UIAlertController(title: "Click", message: String(format: "click on %@", self.productsArray![(indexPath as NSIndexPath).row] as! String), preferredStyle: .alert)
-        alertViewController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (_) in
-            self.dismiss(animated: true, completion: nil)
-        }))
-        self.present(alertViewController, animated: true, completion: nil)
+//        let alertViewController: UIAlertController = UIAlertController(title: "Click", message: String(format: "click on %@", self.productsArray![(indexPath as NSIndexPath).row] as! String), preferredStyle: .alert)
+//        alertViewController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (_) in
+//            self.dismiss(animated: true, completion: nil)
+//        }))
+//        self.present(alertViewController, animated: true, completion: nil)
     }
 }

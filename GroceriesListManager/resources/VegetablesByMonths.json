@@ -1,5 +1,4 @@
-{
-    "fruit-legume": [{
+[{
                      "Janvier": [{
                                  "Nom": "Carotte",
                                  "type": 0
@@ -1594,4 +1593,3 @@
                                   "type": 1
                                   }]
                      }]
-}
