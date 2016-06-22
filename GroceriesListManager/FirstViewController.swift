@@ -12,7 +12,7 @@ class FirstViewController: UIViewController
 {
     
     @IBOutlet weak var tableView: UITableView?
-    var productsDic: NSMutableDictionary?
+    var productsMutableArray: NSMutableArray?
     
     
     
@@ -26,9 +26,9 @@ class FirstViewController: UIViewController
         {
             if let jsonData: Data = try! Data(contentsOf: URL(fileURLWithPath: path))
             {
-                if let jsonDic: NSMutableDictionary = try! JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) as! NSMutableDictionary
+                if let jsonMutableArray: NSMutableArray = try! JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) as! NSMutableArray
                 {
-                    productsDic = jsonDic
+                    productsMutableArray = jsonMutableArray
                 }
             }
         }
@@ -63,27 +63,43 @@ extension FirstViewController : UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int
     {
         //TODO
-        return (productsDic?.allKeys.count)!
+        return (productsMutableArray?.count)!
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         //TODO
-        let keys: Array = (productsDic?.allKeys)!
-        let values: Array = productsDic?.keyEnumerator().value(forUndefinedKey: keys[section] as! String) as! [AnyObject]
-        return values.count
+        if let productForMonth :Dictionary<String, AnyObject> = productsMutableArray![section] as? Dictionary
+        {
+            return (productForMonth[productForMonth.keys.first!]?.count)!
+        }
+        else
+        {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let tableViewCell : UITableViewCell! = UITableViewCell()
-//        tableViewCell.textLabel?.text = productsArray![(indexPath as NSIndexPath).row] as? String
-        tableViewCell.backgroundColor = self.randomColor(Int(arc4random_uniform(4)))
+        let tableViewCell : UITableViewCell! = tableView.dequeueReusableCell(withIdentifier:"ProductCellIdentifier")
+        let currentMonthProducts: Dictionary<String, AnyObject> = (productsMutableArray![indexPath.section] as? Dictionary)!
+        let products: Array<AnyObject> = currentMonthProducts.first?.value as! Array
+        let product: Dictionary<String, AnyObject> = products[indexPath.row] as! Dictionary<String, AnyObject>
+        
+        
+        
+        tableViewCell.textLabel?.text = product["Nom"] as? String
+        tableViewCell.backgroundColor = self.randomColor(product["type"] as! NSInteger)
         return tableViewCell
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let currentMonthProducts: Dictionary<String, AnyObject> = (productsMutableArray![section] as? Dictionary)!
+        return currentMonthProducts.first?.key
     }
 }
 
