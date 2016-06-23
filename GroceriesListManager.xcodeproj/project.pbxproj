@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7C0BF1E51D196ABA00A6F09B /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C0BF1E41D196ABA00A6F09B /* test.json */; };
+		7C2326BC1D1BFF9400F53A10 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2326BB1D1BFF9400F53A10 /* ProductTableViewCell.swift */; };
 		7C57F9C41D16FED300E69600 /* VegetablesByMonths.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C57F9C31D16FED200E69600 /* VegetablesByMonths.json */; };
 		7CD3D70F1D019A340095299D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3D70E1D019A340095299D /* AppDelegate.swift */; };
 		7CD3D7111D019A340095299D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3D7101D019A340095299D /* FirstViewController.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		7C0BF1E41D196ABA00A6F09B /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
+		7C2326BB1D1BFF9400F53A10 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		7C57F9C31D16FED200E69600 /* VegetablesByMonths.json */ = {isa = PBXFileReference; explicitFileType = text.json; fileEncoding = 4; path = VegetablesByMonths.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
 		7CD3D70B1D019A340095299D /* GroceriesListManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceriesListManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD3D70E1D019A340095299D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			children = (
 				7C57F9C21D16FEBC00E69600 /* resources */,
 				7CD3D70E1D019A340095299D /* AppDelegate.swift */,
+				7C2326BB1D1BFF9400F53A10 /* ProductTableViewCell.swift */,
 				7CD3D7101D019A340095299D /* FirstViewController.swift */,
 				7CD3D7121D019A340095299D /* SecondViewController.swift */,
 				7CD3D7141D019A340095299D /* Main.storyboard */,
@@ -210,6 +213,8 @@
 				TargetAttributes = {
 					7CD3D70A1D019A340095299D = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 754EQ9JD9P;
+						DevelopmentTeamName = "Joseph Pasqualini (Personal Team)";
 						LastSwiftMigration = 0800;
 					};
 					7CD3D7201D019A340095299D = {
@@ -279,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CD3D7131D019A340095299D /* SecondViewController.swift in Sources */,
+				7C2326BC1D1BFF9400F53A10 /* ProductTableViewCell.swift in Sources */,
 				7CD3D70F1D019A340095299D /* AppDelegate.swift in Sources */,
 				7CD3D7111D019A340095299D /* FirstViewController.swift in Sources */,
 			);

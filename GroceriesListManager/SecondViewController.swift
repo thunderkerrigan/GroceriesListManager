@@ -9,6 +9,9 @@
 import UIKit
 
 class SecondViewController: UIViewController {
+    
+    var selectedProductsArray: Array<AnyObject> = []
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
