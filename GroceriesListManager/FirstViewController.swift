@@ -8,12 +8,18 @@
 
 import UIKit
 
+protocol AddGroceryDelegate
+{
+    func addGroceriesToList(aGroceryItem groceryItem: Product) -> Bool
+    //    func removeGroceriesToList(aGroceryItem groceryItem: Dictionary<String, AnyObject>) -> Bool
+}
+
 class FirstViewController: UIViewController
 {
     
     @IBOutlet weak var tableView: UITableView?
     var productsByMonthsArray: Array<AnyObject>?
-    
+    var listDelegate: AddGroceryDelegate?
     
     
     override func viewDidLoad()
@@ -21,6 +27,18 @@ class FirstViewController: UIViewController
         super.viewDidLoad()
         tableView?.dataSource = self
         tableView?.delegate = self
+        
+        //atributing AddGroceryDelegate
+        let parentViewController = self.parent
+        
+        if parentViewController is UITabBarController
+        {
+            //todo
+            if let listViewController = parentViewController?.childViewControllers[1]
+            {
+                listDelegate = listViewController as? AddGroceryDelegate
+            }
+        }
         
         if let path = Bundle.main().pathForResource("VegetablesByMonths", ofType: "json")
         {
@@ -56,23 +74,10 @@ class FirstViewController: UIViewController
         }
     }
     
-    func icon(forType type: NSInteger) -> UIImage
-    {
-        switch type
-        {
-        case 0:
-            return #imageLiteral(resourceName: "vegetable")
-        case 1:
-            return #imageLiteral(resourceName: "fruit")
-        default:
-            return UIImage()
-        }
-    }
-    
-    func product(atSection section: NSInteger, andRow row: NSInteger) -> Dictionary<String, AnyObject>{
+    func product(atSection section: NSInteger, andRow row: NSInteger) -> Product{
         let currentMonthProducts: Dictionary<String, AnyObject> = (productsByMonthsArray![section] as? Dictionary)!
         let products: Array<AnyObject> = currentMonthProducts.first?.value as! Array
-        let product: Dictionary<String, AnyObject> = products[row] as! Dictionary<String, AnyObject>
+        let product: Product = Product(products[row] as! Dictionary<String, AnyObject>)
         return product
     }
     
@@ -111,8 +116,8 @@ extension FirstViewController : UITableViewDataSource
     {
         let tableViewCell : ProductTableViewCell! = tableView.dequeueReusableCell(withIdentifier:"ProductCellIdentifier") as! ProductTableViewCell
         let product = self.product(atSection: indexPath.section, andRow: indexPath.row)
-        tableViewCell.productNameLabel.text = product["Nom"] as? String
-        tableViewCell.productImageview.image = self.icon(forType: (product["type"] as! NSInteger))
+        tableViewCell.productNameLabel.text = product.name
+        tableViewCell.productImageview.image = product.icon()
         return tableViewCell
     }
     
@@ -133,18 +138,25 @@ extension FirstViewController : UITableViewDelegate
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
     {
-        let tableViewRowAction: UITableViewRowAction? = UITableViewRowAction(style: .destructive , title: "Effacer", handler: { (_, indexPath) in
-            //TODO
+        let deleteViewRowAction: UITableViewRowAction? = UITableViewRowAction(style: .destructive , title: "Effacer", handler: { (_, indexPath) in
             self.removeProduct(atIndexPath: indexPath)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         })
-        return [tableViewRowAction!]
+        
+        let addToListViewRowAction: UITableViewRowAction? = UITableViewRowAction(style: .default , title: "Ajouter", handler: { (_, indexPath) in
+            let product = self.product(atSection: indexPath.section, andRow: indexPath.row)
+            _ = self.listDelegate?.addGroceriesToList(aGroceryItem: product)
+            tableView.setEditing(false, animated: true)
+        })
+        addToListViewRowAction?.backgroundColor = #colorLiteral(red: 0.4028071761, green: 0.7315050364, blue: 0.2071235478, alpha: 1)
+        
+        return [addToListViewRowAction!, deleteViewRowAction!]
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         let product = self.product(atSection: indexPath.section, andRow: indexPath.row)
-        let alertViewController: UIAlertController = UIAlertController(title: "Click", message: String(format: "click on %@", product["Nom"] as! String), preferredStyle: .alert)
+        let alertViewController: UIAlertController = UIAlertController(title: "Click", message: String(format: "click on %@", product.name), preferredStyle: .alert)
         alertViewController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (_) in
             self.dismiss(animated: true, completion: nil)
         }))
