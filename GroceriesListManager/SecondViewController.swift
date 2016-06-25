@@ -33,11 +33,16 @@ extension SecondViewController : AddGroceryDelegate
     //MARK: AddGroceryDelegate
     func addGroceriesToList(aGroceryItem groceryItem: Product) -> Bool
     {
-        selectedProductsArray.append(groceryItem)
-        selectedProductsArray.sort { (firstProduct, secondProduct) -> Bool in
-            return firstProduct.name < secondProduct.name
+        if !selectedProductsArray.contains({ (item: Product) -> Bool in
+            return item.name == groceryItem.name
+        }) {
+            selectedProductsArray.append(groceryItem)
+            selectedProductsArray.sort { (firstProduct, secondProduct) -> Bool in
+                return firstProduct.name < secondProduct.name
+            }
+            listTableView?.reloadData()
         }
-        listTableView?.reloadData()
+        
         return true
     }
 }
