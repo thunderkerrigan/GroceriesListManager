@@ -38,7 +38,7 @@ extension SecondViewController : AddGroceryDelegate
         }) {
             selectedProductsArray.append(groceryItem)
             selectedProductsArray.sort { (firstProduct, secondProduct) -> Bool in
-                return firstProduct.name < secondProduct.name
+                return firstProduct.name.lowercased() < secondProduct.name.lowercased()
             }
             listTableView?.reloadData()
         }

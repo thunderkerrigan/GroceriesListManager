@@ -138,11 +138,6 @@ extension FirstViewController : UITableViewDelegate
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
     {
-        let deleteViewRowAction: UITableViewRowAction? = UITableViewRowAction(style: .destructive , title: "Effacer", handler: { (_, indexPath) in
-            self.removeProduct(atIndexPath: indexPath)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        })
-        
         let addToListViewRowAction: UITableViewRowAction? = UITableViewRowAction(style: .default , title: "Ajouter", handler: { (_, indexPath) in
             let product = self.product(atSection: indexPath.section, andRow: indexPath.row)
             _ = self.listDelegate?.addGroceriesToList(aGroceryItem: product)
@@ -150,7 +145,7 @@ extension FirstViewController : UITableViewDelegate
         })
         addToListViewRowAction?.backgroundColor = #colorLiteral(red: 0.4028071761, green: 0.7315050364, blue: 0.2071235478, alpha: 1)
         
-        return [addToListViewRowAction!, deleteViewRowAction!]
+        return [addToListViewRowAction!]
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
