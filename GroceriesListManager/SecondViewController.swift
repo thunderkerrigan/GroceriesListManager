@@ -11,18 +11,23 @@ import UIKit
 class SecondViewController: UIViewController {
     
     var selectedProductsArray: [Product] = []
+    var filteredProductsArray: [Product] = []
     @IBOutlet weak var listTableView: UITableView!
+    var searchController: UISearchController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         listTableView.delegate = self
         listTableView.dataSource = self
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        listTableView.tableHeaderView = searchController.searchBar
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 
@@ -57,13 +62,30 @@ extension SecondViewController : UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return selectedProductsArray.count
+        if searchController.searchBar.isFirstResponder()
+        {
+            return filteredProductsArray.count
+        }
+        else
+        {
+            return selectedProductsArray.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let tableViewCell : ProductTableViewCell! = tableView.dequeueReusableCell(withIdentifier:"ProductCellIdentifier") as! ProductTableViewCell
-        let product = selectedProductsArray[indexPath.row]
+        
+        var product: Product
+        if searchController.searchBar.isFirstResponder()
+        {
+            product = filteredProductsArray[indexPath.row]
+        }
+        else
+        {
+            product = selectedProductsArray[indexPath.row]
+        }
+        
         tableViewCell.productNameLabel.text = product.name
         tableViewCell.productImageview.image = product.icon()
         return tableViewCell
@@ -97,5 +119,28 @@ extension SecondViewController : UITableViewDelegate
         }))
         self.present(alertViewController, animated: true, completion: nil)
     }
+}
+
+extension SecondViewController : UISearchResultsUpdating
+{
+    //MARK: - UISearchResultsUpdating
+    func updateSearchResults(for searchController: UISearchController)
+    {
+        if searchController.searchBar.text != ""
+        {
+            filteredProductsArray = selectedProductsArray.filter({ (product) -> Bool in
+                return product.name.lowercased().contains((searchController.searchBar.text?.lowercased())!)
+            })
+            searchController.dimsBackgroundDuringPresentation = false
+        }
+        else
+        {
+            filteredProductsArray = selectedProductsArray
+            searchController.dimsBackgroundDuringPresentation = true
+        }
+        
+        self.listTableView.reloadData()
+    }
+    
 }
 
