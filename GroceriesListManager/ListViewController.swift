@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class ListViewController: UIViewController {
     
     var selectedProductsArray: [Product] = []
     var filteredProductsArray: [Product] = []
@@ -33,7 +33,7 @@ class SecondViewController: UIViewController {
 
 }
 
-extension SecondViewController : AddGroceryDelegate
+extension ListViewController : AddGroceryDelegate
 {
     //MARK: AddGroceryDelegate
     func addGroceriesToList(aGroceryItem groceryItem: Product) -> Bool
@@ -52,7 +52,7 @@ extension SecondViewController : AddGroceryDelegate
     }
 }
 
-extension SecondViewController : UITableViewDataSource
+extension ListViewController : UITableViewDataSource
 {
     //MARK: - UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int
@@ -97,7 +97,7 @@ extension SecondViewController : UITableViewDataSource
     }
 }
 
-extension SecondViewController : UITableViewDelegate
+extension ListViewController : UITableViewDelegate
 {
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
@@ -121,7 +121,7 @@ extension SecondViewController : UITableViewDelegate
     }
 }
 
-extension SecondViewController : UISearchResultsUpdating
+extension ListViewController : UISearchResultsUpdating
 {
     //MARK: - UISearchResultsUpdating
     func updateSearchResults(for searchController: UISearchController)
@@ -131,12 +131,10 @@ extension SecondViewController : UISearchResultsUpdating
             filteredProductsArray = selectedProductsArray.filter({ (product) -> Bool in
                 return product.name.lowercased().contains((searchController.searchBar.text?.lowercased())!)
             })
-            searchController.dimsBackgroundDuringPresentation = false
         }
         else
         {
             filteredProductsArray = selectedProductsArray
-            searchController.dimsBackgroundDuringPresentation = true
         }
         
         self.listTableView.reloadData()

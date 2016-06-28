@@ -14,7 +14,7 @@ protocol AddGroceryDelegate
     //    func removeGroceriesToList(aGroceryItem groceryItem: Dictionary<String, AnyObject>) -> Bool
 }
 
-class FirstViewController: UIViewController
+class ProductsViewController: UIViewController
 {
     
     @IBOutlet weak var tableView: UITableView?
@@ -90,7 +90,7 @@ class FirstViewController: UIViewController
     }
 }
 
-extension FirstViewController : UITableViewDataSource
+extension ProductsViewController : UITableViewDataSource
 {
     //MARK: - UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int
@@ -133,7 +133,7 @@ extension FirstViewController : UITableViewDataSource
     }
 }
 
-extension FirstViewController : UITableViewDelegate
+extension ProductsViewController : UITableViewDelegate
 {
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
