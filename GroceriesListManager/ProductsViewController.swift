@@ -40,7 +40,7 @@ class ProductsViewController: UIViewController
             }
         }
         
-        if let path = Bundle.main().pathForResource("VegetablesByMonths", ofType: "json")
+        if let path =  Bundle.main.path(forResource: "VegetablesByMonths", ofType: "json")
         {
             if let jsonData: Data = try! Data(contentsOf: URL(fileURLWithPath: path))
             {
@@ -49,6 +49,16 @@ class ProductsViewController: UIViewController
                     productsByMonthsArray = jsonMutableArray
                 }
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if (segue.identifier == "ShowDetailProductSegue")
+        {
+            let destination: DetailProductViewController = segue.destination as! DetailProductViewController
+            let __indexPath: IndexPath = (tableView?.indexPathForSelectedRow)!
+            destination.representedProduct =  self.product(atSection: __indexPath.section, andRow: __indexPath.row)
         }
     }
     
@@ -70,7 +80,7 @@ class ProductsViewController: UIViewController
         case 4:
             return #colorLiteral(red: 0.2818343937, green: 0.5693024397, blue: 0.1281824261, alpha: 1)
         default:
-            return UIColor.clear()
+            return UIColor.clear
         }
     }
     
@@ -85,8 +95,8 @@ class ProductsViewController: UIViewController
         let currentMonthProducts: Dictionary<String, AnyObject> = (productsByMonthsArray![indexPath.section] as? Dictionary)!
         var products: Array<AnyObject> = currentMonthProducts.first?.value as! Array
         products.remove(at: indexPath.row)
-        let productDictionary: Dictionary<String, AnyObject> = [(currentMonthProducts.first?.key)! : products]
-        productsByMonthsArray![indexPath.section] = productDictionary
+        let productDictionary: Dictionary<String, AnyObject> = [(currentMonthProducts.first?.key)! : products as AnyObject]
+        productsByMonthsArray![indexPath.section] = productDictionary as AnyObject
     }
 }
 
@@ -151,10 +161,5 @@ extension ProductsViewController : UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         let product = self.product(atSection: indexPath.section, andRow: indexPath.row)
-        let alertViewController: UIAlertController = UIAlertController(title: "Click", message: String(format: "click on %@", product.name), preferredStyle: .alert)
-        alertViewController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (_) in
-            self.dismiss(animated: true, completion: nil)
-        }))
-        self.present(alertViewController, animated: true, completion: nil)
     }
 }

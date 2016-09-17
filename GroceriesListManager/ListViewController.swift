@@ -30,7 +30,16 @@ class ListViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if (segue.identifier == "ShowDetailProductSegue")
+        {
+            let destination: DetailProductViewController = segue.destination as! DetailProductViewController
+            let __indexPath: IndexPath = (listTableView?.indexPathForSelectedRow)!
+            destination.representedProduct =  selectedProductsArray[__indexPath.row]
+        }
+    }
+    
 }
 
 extension ListViewController : AddGroceryDelegate
@@ -38,7 +47,7 @@ extension ListViewController : AddGroceryDelegate
     //MARK: AddGroceryDelegate
     func addGroceriesToList(aGroceryItem groceryItem: Product) -> Bool
     {
-        if !selectedProductsArray.contains({ (item: Product) -> Bool in
+        if !selectedProductsArray.contains(where: { (item: Product) -> Bool in
             return item.name == groceryItem.name
         }) {
             selectedProductsArray.append(groceryItem)
@@ -62,7 +71,7 @@ extension ListViewController : UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        if searchController.searchBar.isFirstResponder()
+        if searchController.searchBar.isFirstResponder
         {
             return filteredProductsArray.count
         }
@@ -77,7 +86,7 @@ extension ListViewController : UITableViewDataSource
         let tableViewCell : ProductTableViewCell! = tableView.dequeueReusableCell(withIdentifier:"ProductCellIdentifier") as! ProductTableViewCell
         
         var product: Product
-        if searchController.searchBar.isFirstResponder()
+        if searchController.searchBar.isFirstResponder
         {
             product = filteredProductsArray[indexPath.row]
         }

@@ -11,6 +11,7 @@
 		7C2326BC1D1BFF9400F53A10 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2326BB1D1BFF9400F53A10 /* ProductTableViewCell.swift */; };
 		7C4E8FF51D1E9D8B0002BAC2 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4E8FF41D1E9D8B0002BAC2 /* Product.swift */; };
 		7C57F9C41D16FED300E69600 /* VegetablesByMonths.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C57F9C31D16FED200E69600 /* VegetablesByMonths.json */; };
+		7C7A44621D23E83500906A21 /* DetailProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7A44611D23E83500906A21 /* DetailProductViewController.swift */; };
 		7CD3D70F1D019A340095299D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3D70E1D019A340095299D /* AppDelegate.swift */; };
 		7CD3D7111D019A340095299D /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3D7101D019A340095299D /* ProductsViewController.swift */; };
 		7CD3D7131D019A340095299D /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3D7121D019A340095299D /* ListViewController.swift */; };
@@ -43,6 +44,7 @@
 		7C2326BB1D1BFF9400F53A10 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		7C4E8FF41D1E9D8B0002BAC2 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		7C57F9C31D16FED200E69600 /* VegetablesByMonths.json */ = {isa = PBXFileReference; explicitFileType = text.json; fileEncoding = 4; path = VegetablesByMonths.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
+		7C7A44611D23E83500906A21 /* DetailProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailProductViewController.swift; sourceTree = "<group>"; };
 		7CD3D70B1D019A340095299D /* GroceriesListManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceriesListManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD3D70E1D019A340095299D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CD3D7101D019A340095299D /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				7C57F9C21D16FEBC00E69600 /* resources */,
 				7CD3D70E1D019A340095299D /* AppDelegate.swift */,
 				7C2326BB1D1BFF9400F53A10 /* ProductTableViewCell.swift */,
+				7C7A44611D23E83500906A21 /* DetailProductViewController.swift */,
 				7CD3D7101D019A340095299D /* ProductsViewController.swift */,
 				7CD3D7121D019A340095299D /* ListViewController.swift */,
 				7CD3D7141D019A340095299D /* Main.storyboard */,
@@ -216,9 +219,9 @@
 				TargetAttributes = {
 					7CD3D70A1D019A340095299D = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 754EQ9JD9P;
 						DevelopmentTeamName = "Joseph Pasqualini (Personal Team)";
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 					7CD3D7201D019A340095299D = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -289,6 +292,7 @@
 				7CD3D7131D019A340095299D /* ListViewController.swift in Sources */,
 				7C2326BC1D1BFF9400F53A10 /* ProductTableViewCell.swift in Sources */,
 				7C4E8FF51D1E9D8B0002BAC2 /* Product.swift in Sources */,
+				7C7A44621D23E83500906A21 /* DetailProductViewController.swift in Sources */,
 				7CD3D70F1D019A340095299D /* AppDelegate.swift in Sources */,
 				7CD3D7111D019A340095299D /* ProductsViewController.swift in Sources */,
 			);
@@ -434,6 +438,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GroceriesListManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.Thunderkerrigan.GroceriesListManager;
@@ -446,6 +453,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GroceriesListManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.Thunderkerrigan.GroceriesListManager;

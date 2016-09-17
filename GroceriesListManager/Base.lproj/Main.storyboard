@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11129.15" systemVersion="15G12a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11103.10"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,10 +23,10 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductCellIdentifier" id="Djw-lM-eBp" customClass="ProductTableViewCell" customModule="GroceriesListManager" customModuleProvider="target">
-                                        <frame key="frameInset" minY="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Djw-lM-eBp" id="kGX-1M-Z7N">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QKz-im-R8v">
@@ -53,6 +53,7 @@
                                         <connections>
                                             <outlet property="productImageview" destination="QKz-im-R8v" id="jJM-s8-Tz6"/>
                                             <outlet property="productNameLabel" destination="h7a-Nb-bCS" id="Aou-fw-waw"/>
+                                            <segue destination="Ffb-5K-U0s" kind="show" identifier="ShowDetailProductSegue" id="FZC-Sw-c0N"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -91,10 +92,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductCellIdentifier" id="lpI-96-Ki6" customClass="ProductTableViewCell" customModule="GroceriesListManager" customModuleProvider="target">
-                                        <frame key="frameInset" minY="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lpI-96-Ki6" id="Yxw-HO-gZg">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yL1-rg-Jdp">
@@ -121,6 +122,7 @@
                                         <connections>
                                             <outlet property="productImageview" destination="yL1-rg-Jdp" id="3Cg-xg-QDF"/>
                                             <outlet property="productNameLabel" destination="jmn-jF-mfC" id="g19-eI-OkW"/>
+                                            <segue destination="Ffb-5K-U0s" kind="show" identifier="ShowDetailProductSegue" id="vsy-xd-D6W"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -134,14 +136,80 @@
                             <constraint firstAttribute="trailing" secondItem="G5W-sA-z3a" secondAttribute="trailing" id="haH-RQ-etm"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="List" image="ListIcon" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="List" image="ListIcon" id="TzY-Wq-NAi"/>
+                    <navigationItem key="navigationItem" id="SVF-Y1-UbF"/>
                     <connections>
                         <outlet property="listTableView" destination="G5W-sA-z3a" id="hGX-oy-RUO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.60000000000002" y="359.37031484257875"/>
+            <point key="canvasLocation" x="1688.8" y="359.37031484257875"/>
+        </scene>
+        <!--Detail Product View Controller-->
+        <scene sceneID="h7i-Qh-uOW">
+            <objects>
+                <viewController id="Ffb-5K-U0s" customClass="DetailProductViewController" customModule="GroceriesListManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eqW-wA-JnO"/>
+                        <viewControllerLayoutGuide type="bottom" id="pxv-Yh-dQY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vPm-r8-kxc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8ki-vG-p1S">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gf-H3-WIk">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JvM-Ra-Qcd">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="96" id="Rb2-XY-NbS"/>
+                                    <constraint firstAttribute="height" constant="96" id="lCv-lV-yb5"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfy-Q0-Lu0">
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="dismissView" destination="Ffb-5K-U0s" eventType="touchUpInside" id="eJc-ey-sYm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9gf-H3-WIk" firstAttribute="trailing" secondItem="vPm-r8-kxc" secondAttribute="trailingMargin" id="17M-DE-qpx"/>
+                            <constraint firstItem="JvM-Ra-Qcd" firstAttribute="top" secondItem="eqW-wA-JnO" secondAttribute="bottom" constant="8" id="9AJ-YV-5UJ"/>
+                            <constraint firstItem="JvM-Ra-Qcd" firstAttribute="leading" secondItem="vPm-r8-kxc" secondAttribute="leadingMargin" id="KkO-0P-gbN"/>
+                            <constraint firstAttribute="trailing" secondItem="8ki-vG-p1S" secondAttribute="trailing" id="Kw1-fW-byW"/>
+                            <constraint firstItem="JvM-Ra-Qcd" firstAttribute="centerY" secondItem="9gf-H3-WIk" secondAttribute="centerY" id="Yrb-wa-23t"/>
+                            <constraint firstItem="pfy-Q0-Lu0" firstAttribute="leading" secondItem="JvM-Ra-Qcd" secondAttribute="leading" id="Yt3-8w-xdU"/>
+                            <constraint firstItem="9gf-H3-WIk" firstAttribute="leading" secondItem="JvM-Ra-Qcd" secondAttribute="trailing" constant="8" id="cds-tg-pQF"/>
+                            <constraint firstItem="9gf-H3-WIk" firstAttribute="top" secondItem="JvM-Ra-Qcd" secondAttribute="top" id="h0g-JI-QtB"/>
+                            <constraint firstItem="8ki-vG-p1S" firstAttribute="top" secondItem="pfy-Q0-Lu0" secondAttribute="bottom" constant="8" id="luG-SR-Sth"/>
+                            <constraint firstItem="pxv-Yh-dQY" firstAttribute="top" secondItem="8ki-vG-p1S" secondAttribute="bottom" id="qKf-V4-lNL"/>
+                            <constraint firstItem="pfy-Q0-Lu0" firstAttribute="top" secondItem="JvM-Ra-Qcd" secondAttribute="bottom" constant="8" id="rZG-yQ-fU4"/>
+                            <constraint firstItem="8ki-vG-p1S" firstAttribute="leading" secondItem="vPm-r8-kxc" secondAttribute="leading" id="tXt-bJ-7xK"/>
+                            <constraint firstItem="pfy-Q0-Lu0" firstAttribute="trailing" secondItem="JvM-Ra-Qcd" secondAttribute="trailing" id="w8n-cZ-EQc"/>
+                            <constraint firstItem="9gf-H3-WIk" firstAttribute="bottom" secondItem="JvM-Ra-Qcd" secondAttribute="bottom" id="wYd-6s-gSm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="tNM-Nr-pol"/>
+                    <connections>
+                        <outlet property="productDetailTextView" destination="8ki-vG-p1S" id="PO0-Y1-P6I"/>
+                        <outlet property="productImageView" destination="JvM-Ra-Qcd" id="Map-cb-8aj"/>
+                        <outlet property="productTitleLabel" destination="9gf-H3-WIk" id="DX9-bp-ZPl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v1y-gX-6yG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3775.1999999999998" y="358.4707646176912"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -155,7 +223,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="Saw-dH-AZL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -167,4 +235,7 @@
         <image name="ListIcon" width="22" height="22"/>
         <image name="productIcon" width="22" height="22"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="vsy-xd-D6W"/>
+    </inferredMetricsTieBreakers>
 </document>
